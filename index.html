@@ -1,180 +1,206 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><3</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: 'Pacifico', cursive;
-      background: url('https://wallpapercave.com/wp/wp14933258.webp') center/cover no-repeat fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 210, 230, 0.55);
-      backdrop-filter: blur(3px);
-    }
-
-    .container {
-      position: relative;
-      width: 380px;
-      padding: 28px;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.75);
-      box-shadow: 0 25px 50px rgba(255,105,180,0.4);
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 26px;
-      color: #ff5fa2;
-      margin-bottom: 24px;
-      text-shadow: 2px 2px 0 #fff;
-    }
-
-    .cards {
-      display: flex;
-      gap: 32px;
-    }
-
-    .card {
-      flex: 1;
-      background: rgba(255,255,255,0.85);
-      border-radius: 20px;
-      padding: 14px;
-      box-shadow: 0 10px 25px rgba(255,105,180,0.35);
-      transition: transform 0.35s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-    }
-
-    /* 👇 FETTERE NAMEN */
-    .name {
-      font-size: 20px;        /* größer */
-      font-weight: 900;       /* fett */
-      margin-bottom: 6px;
-      color: #ff4f9a;
-      text-shadow: 
-        1px 1px 0 #fff,
-        0 0 6px rgba(255,105,180,0.4);
-      letter-spacing: 0.5px;
-    }
-
-    .avatar {
-      width: 100%;
-      height: 140px;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 14px;
-      border: 3px solid #ffb6c1;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .tg {
-      display: block;
-      padding: 12px;
-      border-radius: 999px;
-      background: #ff9fcb;
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      box-shadow: none;
-      transition: transform 0.25s ease;
-    }
-
-    .tg:hover {
-      transform: scale(1.07);
-    }
-
-    audio {
-      display: none;
-    }
-
-    .music {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: #ff69b4;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(255,105,180,0.6);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adorable.wtf</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="https://kit.fontawesome.com/73d0a780d1.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>we are so adorable >,.,<</h1>
+<div class="wrapper">
 
-    <div class="cards">
+    <!-- ═══ SIDEBAR ═══ -->
+    <div class="sidebar">
+        <br><br><br>
 
-      <div class="card">
-        <div class="name">naive</div>
-        <div class="avatar">
-          <img src="naive.png" alt="naive">
+        <div class="navi">
+            <img src="images/papersquare.png" style="width: 270px" alt="">
         </div>
-        <a class="tg" href="https://t.me/naive8975" target="_blank">>,.,<</a>
-      </div>
 
-      <div class="card">
-        <div class="name">reverse</div>
-        <div class="avatar">
-          <img src="reverse.jpg" alt="reverse">
+        <div class="pfp-container">
+            <a href="https://s.tardu.st">
+                <img src="images/pfp.jpg" class="pfp" alt="sev">
+                <span class="pfp-hover">click me</span>
+            </a>
+            <div class="pfp-nametag">krazy</div>
         </div>
-        <a class="tg" href="https://t.me/reverse" target="_blank">>,.,<</a>
-      </div>
+
+        <center>
+            <img style="width:185px; margin-left:-10px; margin-bottom:-15px;" src="images/ivydiv.png" alt="">
+        </center>
+
+        <!-- status -->
+        <div class="box" style="width:140px">
+            <small>
+                <div id="statuscafe">
+                    <div id="statuscafe-username"></div>
+                    <div id="statuscafe-content">i love my life.</div>
+                </div>
+                <script>
+                    fetch("https://status.cafe/users/sever/status.json")
+                      .then(r => r.json())
+                      .then(r => {
+                        if (!r.content.length) {
+                          document.getElementById("statuscafe-content").innerHTML = "no status yet.";
+                          return;
+                        }
+                        document.getElementById("statuscafe-username").innerHTML =
+                          '<a href="https://status.cafe/users/sever" target="_blank">' + r.author + '</a> ' + r.face + ' ' + r.timeAgo;
+                        document.getElementById("statuscafe-content").innerHTML = r.content;
+                      })
+                      .catch(() => {
+                        document.getElementById("statuscafe-content").innerHTML = "sipping something warm.";
+                      });
+                </script>
+            </small>
+        </div>
+
+        <!-- nipi deco gif -->
+        <div class="deco-gif" style="width:140px;">
+            <img src="images/nipi-deco.gif" alt="">
+        </div>
+
+        <div class="banner-gifs">
+            <img src="images/miku.gif" alt="">
+            <img src="images/button-devils.gif" alt="">
+        </div>
+
+        <!-- site button -->
+        <center>
+        </center>
 
     </div>
-  </div>
 
-  <audio id="bgm" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="main-wrapper">
 
-  <div class="music" id="musicBtn">♪</div>
+        <!-- header -->
+        <div class="title">
+            <div class="header">
+                <div class="header-kaomoji">    ∧＿∧
+　 (｡･ω･｡)つ━☆・*。
+  ⊂/      /    ・゜
+　しーＪ        °。+ * 。
+                         .・゜</div>
+                <div class="headertxt">
+                    <span class="site-title">adorable.wtf</span>
+                    <div class="site-subtitle">a quiet place on<br>the internet</div>
+                </div>
+            </div>
+        </div>
 
-  <script>
-    const music = document.getElementById('bgm');
-    const btn = document.getElementById('musicBtn');
-    let playing = false;
+        <!-- welcome -->
+        <h3 style="top:30px; margin-left:-25px;">&#x22C6; i hate ascii art.</h3>
+        <div class="box">
+            <div class="inner">
+                <br>
+                <center>
+                    <p>hi hi, welcome in.</p>
+                    <p>this is my corner of the internet &mdash; a digital scrapbook for the things i collect, the stuff i care about, and whatever else ends up here.</p>
+                    <p>perpetually under construction. that's the charm of it.</p>
+                </center>
+            </div>
+        </div>
 
-    btn.onclick = () => {
-      if (!playing) music.play();
-      else music.pause();
-      playing = !playing;
-    };
-  </script>
+        <br>
 
+        <div class="flex-container">
+            <div>
+                <!-- currently -->
+                <h3 style="top:15px; margin-left:-25px;">&#x22C6; what am i up to?</h3>
+                <div class="box" style="margin-top:-0.5em;">
+                    <div class="inner"><br>
+                        <div class="flex-container" style="margin-top:5px;">
+                            <div style="width:25px; color:#8a9a5b;">
+                                <i class="fa-solid fa-tv"></i>
+                            </div>
+                            <div>i really like cats</div>
+                        </div>
+
+                        <div class="flex-container">
+                            <div style="width:25px; color:#8a9a5b;">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div>i eat alot of ramen</div>
+                        </div>
+
+                        <div class="flex-container">
+                            <div style="width:25px; color:#8a9a5b;">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>i love my gf</div>
+                        </div>
+
+                        <div class="flex-container">
+                            <div style="width:25px; color:#8a9a5b;">
+                                <i class="fa-solid fa-headphones"></i>
+                            </div>
+                            <div>im the goat</div>
+                        </div>
+                    </div>
+
+                    <a href="#">
+                        <img id="outline" class="cat" src="images/ceramickitty.png" style="margin-left:160px; height:45px;" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <!-- contact -->
+                <div style="margin-left:0.5em; width:110px; z-index:2;">
+                    <center>
+                        <b>&#x22C6; find me</b><br><br>
+                        <a href="#">
+                        </a>
+                        <br>
+                        <a href="https://github.com/famousandyetalone">
+                            <h1>github</h1>
+                        </a>
+                        <br>
+                        <h1 onclick="if(this.textContent==='discord'){this.textContent='copied!';navigator.clipboard.writeText('asdfg8250jdsrsk');setTimeout(()=>this.textContent='@asdfg8250jdsrsk',600)}else{this.textContent='discord'}" style="cursor:pointer;">discord</h1>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <!-- latest post -->
+        <h3 style="top:15px; margin-left:-25px;">&#x22C6; latest post</h3>
+        <div class="box" style="margin-top:15px;">
+            <b>01.08.25:</b> today is the day where i got with my gf and i love her alot.
+        </div>
+
+        <p>
+            <center>
+                <small>
+                    est. february 2026 &#x22C6; <b>you are visitor #<span id="hitcount"><img src="https://sev.goatcounter.com/counter//.svg" alt="visitor count" style="height:12px; vertical-align:baseline;"></span></b>!
+                    <br>
+                    <span class="last-updated">last updated: <span id="lastUpdated">feb 21 2026</span></span>
+                </small>
+            </center>
+        </p>
+
+    </div>
+
+    <!-- background decoration -->
+    <img id="pylon" class="pylonimg" style="height:850px;" src="images/pylon3.png" alt="">
+
+</div>
+
+<audio id="bg-audio" src="audio/moon.mp3" loop></audio>
+
+<script data-goatcounter="https://sev.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="https://raw.githubusercontent.com/adryd325/oneko.js/14bab15a755d0e35cd4ae19c931d96d306f99f42/oneko.js"></script>
+<script>
+    document.addEventListener('click', function startAudio() {
+        const audio = document.getElementById('bg-audio');
+        audio.volume = 0.4;
+        audio.play();
+        document.removeEventListener('click', startAudio);
+    }, { once: true });
+</script>
 </body>
 </html>
